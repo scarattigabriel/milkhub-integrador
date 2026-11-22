@@ -1,0 +1,39 @@
+:root {
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: #45382f;
+    background: #fcfaf5;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    --cor-principal: #583823;
+    --cor-secundaria: #75675c;
+    --cor-borda: #ded3c7;
+}
+
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; min-width: 320px; }
+button, input, select, textarea { font: inherit; }
+button, input, select, textarea { max-width: 100%; }
+input, select, textarea { min-width: 0; }
+textarea { resize: vertical; }
+fieldset { min-inline-size: 0; }
+legend { max-width: 100%; overflow-wrap: anywhere; }
+h1, h2, h3, p { overflow-wrap: anywhere; }
+a { color: var(--cor-principal); }
+button:disabled { cursor: wait; opacity: .65; }
+input:disabled { background: #f3f5f1; }
+.botao-primario, .botao-secundario { min-height: 44px; padding: 11px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+.botao-primario { border: 1px solid var(--cor-principal); background: var(--cor-principal); color: #fff; }
+.botao-primario:hover:not(:disabled) { background: #402719; border-color: #402719; }
+.botao-secundario { border: 1px solid var(--cor-borda); background: #fff; color: var(--cor-principal); }
+.botao-secundario:hover:not(:disabled) { background: #f4ecdf; }
+.acoes-usuario { display: flex; align-items: center; gap: 16px; }
+.estado-sessao { max-width: 640px; padding: 64px 24px; margin: auto; }
+.estado-sessao h1 { font-size: 1.7rem; }
+.estado-sessao button { margin: 12px 12px 0 0; }
+:focus-visible { outline: 3px solid #8d6623; outline-offset: 4px; }
+
+.marca { display: flex; align-items: center; gap: 12px; font-size: 1.05rem; font-weight: 700; }
+h1 { font-size: clamp(2rem, 4.7vw, 3.5rem); line-height: 1.13; letter-spacing: -.04em; margin: 24px 0; font-weight: 650; }
+footer { color: var(--cor-secundaria); font-size: .8rem; line-height: 1.6; border-top: 1px solid var(--cor-borda); padding-top: 20px; }

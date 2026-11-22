@@ -1,0 +1,53 @@
+.pagina-reproducao a { text-decoration: none; }
+.pagina-reproducao .campo-modulo input,
+.pagina-reproducao .campo-modulo select,
+.pagina-reproducao .campo-modulo textarea {
+    border-color: var(--cor-borda);
+    color: #45382f;
+    accent-color: var(--cor-principal);
+}
+.pagina-reproducao .opcao-marcacao input { accent-color: var(--cor-principal); }
+.pagina-reproducao .campo-modulo input:disabled,
+.pagina-reproducao .campo-modulo select:disabled,
+.pagina-reproducao .campo-modulo input:read-only { background: #fcfaf5; }
+.pagina-reproducao .tabela-modulo thead { background: #f4ecdf; }
+.pagina-reproducao .tabela-modulo th,
+.pagina-reproducao .tabela-modulo td,
+.pagina-reproducao .lista-registros li { border-bottom-color: var(--cor-borda); }
+.pagina-reproducao .mensagem-sucesso { background: #f4ecdf; color: var(--cor-principal); }
+.pagina-reproducao .abas-reproducao a[aria-current] { background: #f4ecdf; border-color: var(--cor-principal); }
+.pagina-reproducao .botao-texto {
+    text-decoration: none;
+    border: 1px solid var(--cor-borda);
+    border-radius: 8px;
+    padding: 10px 16px;
+    background: #fff;
+    font-weight: 600;
+}
+.pagina-reproducao .botao-texto:hover:not(:disabled) { background: #f4ecdf; }
+.identificacao-animal-linhas { display: inline-flex; flex-direction: column; gap: 5px; min-width: 0; white-space: normal; }
+.identificacao-animal-linhas > span { color: var(--cor-principal); overflow-wrap: anywhere; }
+.identificacao-animal-linhas > small { color: var(--cor-secundaria); font-size: .78rem; font-weight: 400; line-height: 1.5; }
+.seletor-animal-reproducao { position: relative; }
+.botao-seletor-animal {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    min-height: 44px;
+    width: 100%;
+    border: 1px solid var(--cor-borda);
+    border-radius: 7px;
+    padding: 11px 12px;
+    background: #fff;
+    color: #45382f;
+    text-align: left;
+    cursor: pointer;
+}
+.opcoes-animal-reproducao { position: absolute; top: 100%; left: 0; right: 0; z-index: 5; margin-top: 6px; padding: 10px; border: 1px solid var(--cor-borda); border-radius: 8px; background: #fff; box-shadow: 0 8px 20px rgb(88 56 35 / 12%); }
+.opcoes-animal-reproducao [role=listbox] { max-height: 250px; overflow-y: auto; margin-top: 8px; }
+.opcoes-animal-reproducao [role=option] { display: block; width: 100%; min-height: 44px; padding: 10px; border: 1px solid transparent; border-radius: 6px; background: #fff; color: var(--cor-principal); text-align: left; cursor: pointer; }
+.opcoes-animal-reproducao [role=option]:hover,
+.opcoes-animal-reproducao [aria-selected=true] { background: #f4ecdf; border-color: var(--cor-borda); }
+.opcoes-animal-reproducao p { font-size: .8rem; color: var(--cor-secundaria); }
+.pagina-reproducao .acoes-tabela .botao-secundario { padding: 8px 12px; font-size: .8rem; }

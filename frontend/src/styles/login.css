@@ -1,0 +1,59 @@
+.pagina-login {
+    --cor-principal: #583823;
+    --cor-secundaria: #75675c;
+    --cor-borda: #ded3c7;
+    --login-creme: #fcfaf5;
+    --login-bege: #f4ecdf;
+    --login-marrom: #583823;
+    --login-texto: #45382f;
+    min-height: 100dvh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    color: var(--login-texto);
+    background: var(--login-creme);
+}
+.logo-login { display: block; width: min(100%, 420px); height: auto; flex-shrink: 0; }
+.apresentacao-login {
+    background: var(--login-bege);
+    padding: clamp(48px, 7vh, 80px) clamp(24px, 4vw, 64px) 56px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
+    min-width: 0;
+    gap: clamp(48px, 8vh, 96px);
+    border-right: 1px solid var(--cor-borda);
+}
+.texto-apresentacao { width: calc(100% + 32px); max-width: 640px; margin-top: 32px; container-type: inline-size; }
+.texto-apresentacao h1 { color: var(--login-marrom); font-size: min(4rem, 7cqi); line-height: 1.2; margin: 0; white-space: nowrap; }
+.texto-apresentacao > p { width: 100%; margin: 18px auto 0; color: var(--cor-secundaria); line-height: 1.8; font-size: 1.05rem; }
+.area-formulario { display: flex; align-items: center; justify-content: center; padding: 56px 28px; background: #fff; }
+.cartao-login { width: 100%; max-width: 380px; }
+.legenda-login { color: var(--login-marrom); font-size: .72rem; font-weight: 700; letter-spacing: .12em; }
+.cartao-login h2 { color: var(--login-marrom); font-size: 1.9rem; letter-spacing: -.04em; margin: 14px 0 10px; }
+.descricao-login { color: var(--cor-secundaria); font-size: .95rem; line-height: 1.6; margin: 0 0 32px; }
+.campo-formulario { margin-bottom: 22px; }
+.campo-formulario label { display: block; color: var(--login-marrom); font-size: .9rem; font-weight: 600; margin-bottom: 9px; }
+.campo-formulario input { width: 100%; min-height: 48px; border: 1px solid #9b8876; border-radius: 8px; padding: 12px 14px; color: var(--login-texto); background: #fffefb; }
+.campo-formulario input::placeholder { color: #7c6d60; font-size: .9rem; }
+.pagina-login :focus-visible { outline-color: var(--login-marrom); }
+.pagina-login input:disabled { background: #f0e9df; }
+.campo-senha { position: relative; }
+.campo-senha input { padding-right: 88px; }
+.alternar-senha { position: absolute; right: 6px; top: 2px; min-height: 44px; padding: 8px; border: 0; border-radius: 5px; background: transparent; color: var(--cor-principal); font-size: .8rem; font-weight: 600; cursor: pointer; }
+.alternar-senha:hover { background: var(--login-bege); }
+.cartao-login .botao-primario { width: 100%; margin-top: 6px; }
+.cartao-login .botao-primario:hover:not(:disabled) { background: #402719; border-color: #402719; }
+.ajuda-login { margin: 28px 0 0; padding-top: 24px; border-top: 1px solid var(--cor-borda); color: var(--cor-secundaria); font-size: .82rem; line-height: 1.7; text-align: center; }
+.mensagem-erro, .mensagem-aviso { padding: 12px 14px; border-radius: 8px; font-size: .88rem; line-height: 1.5; overflow-wrap: anywhere; }
+.mensagem-erro { color: #842c25; background: #fff2ef; border: 1px solid #ebc3bb; }
+.mensagem-aviso { color: #634914; background: #fff9e9; border: 1px solid #ead6a6; }
+@media (max-width: 760px) {
+    .logo-login { width: min(100%, 300px); }
+    .pagina-login { grid-template-columns: 1fr; }
+    .apresentacao-login { padding: 40px 24px; gap: 40px; border-right: 0; border-bottom: 1px solid var(--cor-borda); }
+    .texto-apresentacao { width: 100%; margin-top: 24px; }
+    .texto-apresentacao > p { font-size: .95rem; margin-top: 16px; }
+    .area-formulario { padding: 36px 24px; }
+}

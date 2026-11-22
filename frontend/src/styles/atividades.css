@@ -1,0 +1,64 @@
+.pagina-atividades .campo-modulo input,
+.pagina-atividades .campo-modulo select,
+.pagina-atividades .campo-modulo textarea {
+    border-color: var(--cor-borda);
+    color: #45382f;
+    accent-color: var(--cor-principal);
+}
+.pagina-atividades .opcao-marcacao input { accent-color: var(--cor-principal); }
+.pagina-atividades .campo-modulo input:disabled,
+.pagina-atividades .campo-modulo select:disabled,
+.pagina-atividades .campo-modulo input:read-only { background: #fcfaf5; }
+.pagina-atividades .tabela-modulo thead { background: #f4ecdf; }
+.pagina-atividades .tabela-modulo th,
+.pagina-atividades .tabela-modulo td,
+.pagina-atividades .lista-registros li { border-bottom-color: var(--cor-borda); }
+.pagina-atividades .mensagem-sucesso { background: #f4ecdf; color: var(--cor-principal); }
+.pagina-atividades .atividade-concluida { color: #3d6947; font-weight: 650; }
+.pagina-atividades .atividade-atrasada { color: #a13c30; font-weight: 650; }
+.pagina-atividades .acoes-tabela a,
+.pagina-atividades .acoes-modulo a,
+.pagina-atividades .botao-texto { text-decoration: none; }
+.cadastrar-medicamento { margin-top: 8px; font-size: .85rem; text-align: left; }
+.dialogo-medicamento {
+    width: min(480px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+    padding: 24px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 16px;
+    background: #fff;
+    color: var(--cor-principal);
+}
+.dialogo-medicamento::backdrop { background: rgb(45 30 20 / 40%); }
+.dialogo-medicamento h2 { margin: 0 0 24px; font-size: 1.35rem; }
+.dialogo-medicamento .campo-modulo + .campo-modulo { margin-top: 20px; }
+.busca-participantes { max-width: 640px; }
+.resultados-participantes { border: 1px solid var(--cor-borda); border-radius: 8px; padding: 8px; margin-top: 8px; }
+.resultado-participante {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 44px;
+    padding: 10px;
+    border: 0;
+    border-radius: 6px;
+    background: #fff;
+    color: var(--cor-principal);
+    text-align: left;
+    overflow-wrap: anywhere;
+    cursor: pointer;
+}
+.resultado-participante:hover { background: #f4ecdf; }
+.resultado-participante span { font-size: .8rem; }
+.participantes-selecionados { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 8px; }
+.participantes-selecionados li { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 12px; background: #f4ecdf; border-radius: 8px; }
+.participantes-selecionados li span { overflow-wrap: anywhere; min-width: 0; }
+
+.gerenciar-medicamentos-botao { display: block; margin-top: 12px; }
+.dialogo-medicamento.gerenciar-medicamentos { width: min(900px, calc(100% - 32px)); }
+.gerenciar-medicamentos .abertura-dashboard h1 { font-size: 1.6rem; }
+.gerenciar-medicamentos .formulario-modulo { width: 100%; }
+.gerenciar-medicamentos .abertura-dashboard { flex-wrap: wrap; }

@@ -1,0 +1,22 @@
+.dialogo-tipo-financeiro {
+    width: min(440px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+    padding: 24px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 16px;
+    background: #fff;
+    color: var(--cor-principal);
+    box-sizing: border-box;
+}
+
+.dialogo-tipo-financeiro::backdrop { background: rgb(45 30 20 / 40%); }
+.dialogo-tipo-financeiro h2 { margin: 0 0 24px; font-size: 1.35rem; }
+.seletor-tipo-financeiro { min-width: 0; }
+.criar-tipo-financeiro { margin-top: 8px; font-size: .85rem; text-align: left; }
+
+.botao-gerenciar-tipos { display: block; margin-top: 12px; }
+.dialogo-tipo-financeiro.gerenciar-tipos-financeiro { width: min(900px, calc(100% - 32px)); }
+.gerenciar-tipos-financeiro .abertura-dashboard { flex-wrap: wrap; }
+.gerenciar-tipos-financeiro .abertura-dashboard h1 { font-size: 1.6rem; }
+.gerenciar-tipos-financeiro .formulario-modulo { width: 100%; }

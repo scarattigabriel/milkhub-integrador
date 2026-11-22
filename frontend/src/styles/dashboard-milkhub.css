@@ -1,0 +1,71 @@
+.dashboard-milkhub { padding-top: 32px; padding-bottom: 48px; }
+.dashboard-milkhub .abertura-dashboard { margin-bottom: 24px; }
+.dashboard-milkhub .abertura-dashboard h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 8px 0; }
+.dashboard-milkhub .atualizacao { padding: 12px 16px; background: transparent; line-height: 1.7; }
+.dashboard-milkhub .indicadores { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-bottom: 32px; }
+.dashboard-milkhub .indicador { border-color: #e9e0d5; border-radius: 14px; padding: 22px; }
+.dashboard-milkhub .indicador h2 { color: #75675c; font-size: .78rem; line-height: 1.5; min-height: 24px; margin-bottom: 14px; }
+.dashboard-milkhub .indicador > strong { color: #583823; font-size: clamp(1.6rem, 2.8vw, 2.3rem); }
+.dashboard-milkhub .indicador-alerta { background: #fff; border-color: #e9e0d5; }
+.dashboard-milkhub .indicador-alerta > strong { color: #a13c30; }
+.cabecalho-secao-dashboard { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin: 0 0 18px; }
+.cabecalho-secao-dashboard h2 { font-size: 1.15rem; margin: 0 0 6px; }
+.cabecalho-secao-dashboard p { font-size: .8rem; line-height: 1.6; color: var(--cor-secundaria); margin: 0; }
+.cabecalho-secao-dashboard a, .dashboard-milkhub .titulo-painel > a { font-size: .78rem; padding-block: 10px; text-underline-offset: 4px; }
+.atencao-dashboard { margin-bottom: 32px; }
+.grade-atencao { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.cartao-atencao { min-width: 0; background: #fff; border: 1px solid #e9e0d5; border-top: 3px solid #bc9a7f; padding: 20px; border-radius: 12px; }
+.cartao-atencao.atencao-atraso { border-top-color: #a14435; background: #fff; }
+.cartao-atencao.atencao-aviso { border-top-color: #a4702c; background: #fff; }
+.resumo-atencao { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 18px; }
+.resumo-atencao h3 { margin: 0; font-size: .86rem; }
+.resumo-atencao > strong { font-size: 1.5rem; color: #583823; }
+.atencao-atraso .resumo-atencao > strong { color: #a14435; }
+.cartao-atencao ul { margin: 0; padding: 0; list-style: none; }
+.cartao-atencao li + li { border-top: 1px solid #eee5d9; margin-top: 12px; padding-top: 12px; }
+.cartao-atencao li a { display: inline-block; font-size: .82rem; line-height: 1.6; font-weight: 600; overflow-wrap: anywhere; }
+.cartao-atencao .link-atividade-atrasada { text-decoration: none; }
+.link-atividade-atrasada span { display: inline-block; margin-left: 4px; }
+.cartao-atencao small { display: block; margin-top: 4px; color: #75675c; font-size: .74rem; line-height: 1.6; }
+.cartao-atencao p { color: #75675c; font-size: .78rem; line-height: 1.7; margin: 8px 0 0; }
+.cartao-atencao.atencao-atraso h3 { color: #a14435; }
+.link-previsoes { display: inline-block; font-size: .78rem; padding-block: 12px; margin-top: 8px; text-decoration: none; }
+.cartao-atencao .identificacao-animal-linhas { display: inline-flex; flex-direction: column; gap: 4px; }
+.cartao-atencao .identificacao-animal-linhas small { font-weight: 400; margin-top: 0; }
+.grade-rotina .identificacao-animal-linhas { display: inline-flex; flex-direction: column; gap: 4px; }
+.grade-rotina .identificacao-animal-linhas > span { color: var(--cor-principal); font-size: inherit; line-height: inherit; }
+.grade-rotina .identificacao-animal-linhas > small { font-weight: 400; margin-top: 0; }
+.grade-rotina .link-gestacao-dashboard { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; text-decoration: none; }
+.grade-rotina .link-gestacao-dashboard > span { color: inherit; font-size: inherit; }
+.grade-rotina .link-carencias-dashboard { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; }
+.producao-financeiro-dashboard { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; margin-bottom: 32px; align-items: stretch; }
+.producao-financeiro-dashboard.com-financeiro { grid-template-columns: minmax(0, 1.8fr) minmax(300px, 1fr); }
+.dashboard-milkhub .painel { border-color: #e9e0d5; border-radius: 14px; }
+.dashboard-milkhub .titulo-painel h2 { font-size: .96rem; }
+.dashboard-milkhub .linha-svg text { fill: #75675c; }
+.dashboard-milkhub .lista-registros li { border-bottom-color: #eee5d9; }
+.financeiro-visao { margin: 0; }
+.resumo-financeiro-dashboard { display: grid; gap: 12px; }
+.resumo-financeiro-dashboard > div { padding: 16px 18px; background: #fcfaf5; border-radius: 10px; min-width: 0; }
+.resumo-financeiro-dashboard span { display: block; color: #75675c; font-size: .78rem; margin-bottom: 8px; }
+.resumo-financeiro-dashboard strong { font-size: 1.3rem; overflow-wrap: anywhere; }
+.resumo-financeiro-dashboard .valor-positivo { color: #3d6947; }
+.resumo-financeiro-dashboard .valor-negativo { color: #a13c30; }
+.resumo-financeiro-dashboard .saldo-financeiro { display: block; background: #f4ecdf; }
+.resumo-financeiro-dashboard .saldo-negativo { background: #fff2ef; color: #8a352a; }
+.dashboard-milkhub .lista-registros .etiqueta-atividade { display: inline-block; padding: 3px 8px; border-radius: 6px; margin-bottom: 8px; color: #885b1e; background: #fff3db; font-size: .68rem; }
+.dashboard-milkhub .lista-registros .etiqueta-atrasada { color: #923c30; background: #fcece6; }
+@media (max-width: 1000px) {
+    .producao-financeiro-dashboard.com-financeiro { grid-template-columns: minmax(0, 1fr); }
+    .dashboard-milkhub .indicadores { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grade-atencao { grid-template-columns: 1fr; }
+}
+@media (max-width: 760px) {
+    .dashboard-milkhub .indicador { padding: 16px; }
+    .dashboard-milkhub .indicador h2 { min-height: 36px; }
+    .dashboard-milkhub .indicadores { gap: 12px; }
+    .cartao-atencao { padding: 18px; }
+}
+@media (max-width: 480px) {
+    .dashboard-milkhub .indicadores { grid-template-columns: minmax(0, 1fr); }
+}

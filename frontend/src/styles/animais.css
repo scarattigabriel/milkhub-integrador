@@ -1,0 +1,40 @@
+.pagina-animais .campo-modulo input,
+.pagina-animais .campo-modulo select,
+.pagina-animais .campo-modulo textarea {
+    border-color: var(--cor-borda);
+    color: #45382f;
+    accent-color: var(--cor-principal);
+}
+
+.pagina-animais .campo-modulo input:disabled,
+.pagina-animais .campo-modulo select:disabled,
+.pagina-animais .campo-modulo input:read-only { background: #fcfaf5; }
+.pagina-animais .tabela-modulo thead { background: #f4ecdf; }
+.pagina-animais .tabela-modulo th,
+.pagina-animais .tabela-modulo td,
+.pagina-animais .lista-registros li { border-bottom-color: var(--cor-borda); }
+.pagina-animais .mensagem-sucesso { background: #f4ecdf; color: var(--cor-principal); }
+
+.pagina-animais .acoes-tabela a,
+.pagina-animais .acoes-modulo a,
+.pagina-animais .botao-texto { text-decoration: none; }
+
+.cadastrar-nova-raca { margin-top: 8px; font-size: .85rem; text-align: left; }
+.dialogo-raca {
+    width: min(440px, calc(100% - 32px));
+    max-height: calc(100dvh - 32px);
+    overflow: auto;
+    padding: 24px;
+    border: 1px solid var(--cor-borda);
+    border-radius: 16px;
+    background: #fff;
+    color: var(--cor-principal);
+}
+.dialogo-raca::backdrop { background: rgb(45 30 20 / 40%); }
+.dialogo-raca h2 { margin: 0 0 24px; font-size: 1.35rem; }
+
+.ordenacao-animais { display: flex; justify-content: flex-end; margin-bottom: 20px; }
+.ordenacao-animais .campo-modulo { width: min(100%, 280px); }
+@media (max-width: 600px) {
+    .ordenacao-animais .campo-modulo { width: 100%; }
+}

@@ -1,0 +1,14 @@
+.pagina-carencias .campo-modulo select {
+    border-color: var(--cor-borda);
+    color: #45382f;
+    background: #fff;
+}
+.pagina-carencias .painel-carencias a { text-decoration: none; }
+.identificacao-carencia a { display: flex; flex-direction: column; gap: 6px; }
+.identificacao-carencia small { color: var(--cor-secundaria); font-size: .82rem; font-weight: 400; }
+.pagina-carencias .lista-registros li { border-bottom-color: var(--cor-borda); }
+.pagina-carencias .prazo-carencia {
+    background: #fbeeea;
+    border-color: #ebc8c0;
+    color: #963e33;
+}

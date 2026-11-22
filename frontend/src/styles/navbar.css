@@ -1,0 +1,36 @@
+.milkhub-interno.pagina-dashboard { background: #fcfaf5; color: #45382f; }
+.milkhub-interno h1, .milkhub-interno h2, .milkhub-interno h3 { color: var(--cor-principal); }
+.barra-milkhub { background: #fff; border-bottom: 1px solid var(--cor-borda); box-shadow: 0 3px 16px #58382306; }
+.milkhub-interno .cabecalho-dashboard { max-width: 1328px; margin: auto; padding: 12px 24px; gap: 24px; border: 0; }
+.link-marca { display: inline-flex; flex-shrink: 0; border-radius: 8px; }
+.link-marca .marca { min-width: 0; max-width: 100%; }
+.marca-logo { display: block; width: 210px; max-width: 100%; height: auto; }
+.milkhub-interno .acoes-usuario { gap: 12px; }
+.avatar-usuario { display: grid; place-items: center; flex-shrink: 0; width: 40px; height: 40px; background: #f4ecdf; border: 1px solid #e7d8c6; border-radius: 50%; color: #583823; font-size: .78rem; font-weight: 700; }
+.milkhub-interno .identidade-usuario { text-align: left; max-width: 260px; }
+.milkhub-interno .identidade-usuario strong { font-size: .83rem; }
+.milkhub-interno .identidade-usuario span { font-size: .72rem; }
+.milkhub-interno .sair-navbar { display: inline-flex; align-items: center; gap: 8px; margin-left: 12px; background: #fff; font-size: .8rem; }
+.milkhub-interno .sair-navbar:hover { background: #f4ecdf; }
+.milkhub-interno .navegacao-principal { max-width: 1328px; margin: auto; padding: 8px 24px 12px; gap: 4px; border: 0; flex-wrap: wrap; background: #fff; }
+.milkhub-interno .navegacao-principal a { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 10px 14px; border: 1px solid transparent; border-radius: 8px; font-size: .8rem; font-weight: 500; color: #75675c; line-height: 1.4; }
+.milkhub-interno .navegacao-principal a:hover { background: #f8f3eb; color: #583823; }
+.milkhub-interno .navegacao-principal a[aria-current] { background: #583823; border-color: #583823; color: #fff; font-weight: 650; }
+.milkhub-interno .menu-toggle { gap: 8px; font-size: .8rem; }
+@media (max-width: 1100px) {
+    .milkhub-interno .cabecalho-dashboard { flex-wrap: wrap; gap: 12px 20px; }
+    .milkhub-interno .link-marca { flex: 1; min-width: 0; }
+    .milkhub-interno .menu-toggle { display: inline-flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .milkhub-interno .acoes-usuario { width: 100%; max-width: none; padding-top: 12px; border-top: 1px solid #eee5d9; justify-content: flex-start; }
+    .milkhub-interno .identidade-usuario { flex: 1; max-width: none; }
+    .milkhub-interno .sair-navbar { margin-left: auto; }
+    .milkhub-interno .navegacao-principal { display: none; }
+    .milkhub-interno .navegacao-principal.menu-aberto { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; padding: 8px 24px 16px; }
+}
+@media (max-width: 600px) {
+    .milkhub-interno .cabecalho-dashboard { padding: 10px 16px 14px; }
+    .marca-logo { width: 180px; }
+    .milkhub-interno .navegacao-principal.menu-aberto { grid-template-columns: repeat(2, minmax(0, 1fr)); padding: 6px 16px 16px; }
+    .milkhub-interno .navegacao-principal a { padding: 10px; overflow-wrap: anywhere; min-width: 0; }
+    .milkhub-interno .menu-toggle { padding-inline: 10px; }
+}

@@ -1,0 +1,21 @@
+.pagina-leite .campo-modulo input,
+.pagina-leite .campo-modulo select,
+.pagina-leite .campo-modulo textarea {
+    border-color: var(--cor-borda);
+    color: #45382f;
+    accent-color: var(--cor-principal);
+}
+.pagina-leite .campo-modulo input:disabled,
+.pagina-leite .campo-modulo select:disabled,
+.pagina-leite .campo-modulo input:read-only { background: #fcfaf5; }
+.pagina-leite .tabela-modulo thead { background: #f4ecdf; }
+.pagina-leite .tabela-modulo th,
+.pagina-leite .tabela-modulo td,
+.pagina-leite .lista-registros li { border-bottom-color: var(--cor-borda); }
+.pagina-leite .mensagem-sucesso { background: #f4ecdf; color: var(--cor-principal); }
+.pagina-leite .acoes-tabela a,
+.pagina-leite .botao-texto { text-decoration: none; }
+.colunas-svg { display: block; width: 100%; height: auto; }
+.colunas-svg text { fill: var(--cor-secundaria); font-size: 12px; }
+.coluna-diaria { fill: #70452f; cursor: pointer; }
+.coluna-diaria:hover, .coluna-diaria:focus { fill: #ad7954; }
