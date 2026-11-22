@@ -93,4 +93,28 @@ Abra `http://localhost:5173` no navegador e entre com o login e a senha do gesto
 
 Se alterar as portas, mantenha `VITE_API_URL` apontando para a API e `CORS_ORIGIN` correspondente à origem do frontend. Reinicie os respectivos servidores após modificar os arquivos de ambiente.
 
+## 5. Carregar os dados de demonstração
+
+Para explorar o sistema com registros fictícios, utilize o comando abaixo em outro terminal, partindo da raiz do projeto:
+
+```sh
+cd backend
+yarn popular-demo
+```
+
+Antes de executar, o banco deve estar criado com o DDL aplicado, o arquivo `backend/.env` configurado e as dependências instaladas. O comando adiciona os registros ao banco indicado nesse arquivo, por isso prefira um banco separado para demonstração. A carga não está disponível quando `NODE_ENV` é `production`.
+
+São cadastrados animais, raças, reprodutores, medicamentos, atividades, aplicações com carência, eventos reprodutivos, coletas de leite e lançamentos financeiros. Os registros utilizam identificações como `[DEMO]` e brincos `DEMO-001`. As datas são calculadas a partir do dia da execução para permitir visualizar os dados no dashboard e nas demais telas.
+
+A carga também cria duas contas:
+
+| Perfil | Login | Senha |
+| --- | --- | --- |
+| Gestor | `demo.gestor` | `DemoLeite2026!` |
+| Colaborador | `demo.colaborador` | `DemoLeite2026!` |
+
+Com o backend e o frontend em execução, acesse `http://localhost:5173` e entre com uma dessas contas. O gestor pode acessar os cadastros e o financeiro; o colaborador acessa as consultas permitidas ao seu perfil.
+
+Não é necessário carregar a demonstração a cada início do sistema. Quando a carga já existe, o comando informa `jaExistia: true` e não a recria nem redefine as senhas. Se a carga falhar, as alterações daquela execução são desfeitas.
+
 Os arquivos `.env` contêm informações privadas e não devem ser enviados ao GitHub.
