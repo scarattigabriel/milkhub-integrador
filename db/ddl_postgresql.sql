@@ -1,34 +1,10 @@
--- =====================================================================
--- DDL - Gestão de rebanho leiteiro (PostgreSQL 12+)
--- Conforme o modelo ER e mapeamento_logico.md.
--- Script de criação para banco vazio; não é uma migração de dados existentes.
--- Domínios usam códigos em maiúsculas, sem acentos.
--- Ao concluir uma atividade, confirme dose e carência e informe o encerramento
--- na mesma transação do backend. A aplicação deve preencher a data efetiva
--- de cada uso, podendo sugerir a data agendada no formulário de confirmação.
--- Dose e carência planejadas são substituídas pelos valores confirmados.
--- Alertas, permissões por perfil, parâmetros de manejo e apresentação dos
--- documentos, atualização de prenhez/lactação e criação das previsões
--- reprodutivas são responsabilidades da aplicação, na mesma transação dos eventos.
--- O backend também deve validar datas futuras, maternidade e vínculos entre
--- eventos reprodutivos, além da competência das coletas vinculadas ao fechamento.
--- Cabe ao backend calcular fim_carencia_leite e exigir dose e carência efetivas
--- na realização. Usos planejados ou cancelados devem permanecer sem data de
--- aplicação e sem fim de carência. A conclusão da atividade e a confirmação
--- dos usos devem ser gravadas na mesma transação.
--- Desaleitamento pode ser registrado como uma atividade do tipo DESALEITAMENTO.
--- =====================================================================
-
 BEGIN;
 
--- ---------------------------------------------------------------------
--- Cadastros básicos
--- ---------------------------------------------------------------------
 CREATE TABLE usuario (
     cod_usuario  INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome         VARCHAR(150) NOT NULL,
     login        VARCHAR(60)  NOT NULL,
-    senha        VARCHAR(255) NOT NULL,          -- armazenar HASH (bcrypt/argon2)
+    senha        VARCHAR(255) NOT NULL,
     ativo        BOOLEAN      NOT NULL DEFAULT TRUE,
     perfil       VARCHAR(20)  NOT NULL,
     CONSTRAINT uq_usuario_login UNIQUE (login),
@@ -49,9 +25,6 @@ CREATE TABLE reprodutor (
     CONSTRAINT fk_reprodutor_raca FOREIGN KEY (cod_raca) REFERENCES raca (cod_raca)
 );
 
--- ---------------------------------------------------------------------
--- Animal (FK para parto é adicionada ao final, por causa do ciclo)
--- ---------------------------------------------------------------------
 CREATE TABLE animal (
     cod_animal         INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     brinco             VARCHAR(30) NOT NULL,
@@ -65,9 +38,9 @@ CREATE TABLE animal (
     tipo_saida         VARCHAR(30),
     motivo_saida       VARCHAR(255),
     prenha             CHAR(1) NOT NULL,
-    cod_raca           INTEGER,                  -- pode não haver conhecimento da raça
-    cod_animal_mae     INTEGER,                  -- pode não haver conhecimento da mãe
-    cod_parto          INTEGER,                  -- FK criada mais abaixo
+    cod_raca           INTEGER,
+    cod_animal_mae     INTEGER,
+    cod_parto          INTEGER,
     CONSTRAINT uq_animal_brinco UNIQUE (brinco),
     CONSTRAINT ck_animal_brinco CHECK (btrim(brinco) <> ''),
     CONSTRAINT ck_animal_nome CHECK (btrim(nome) <> ''),
@@ -88,9 +61,6 @@ CREATE TABLE animal (
     CONSTRAINT fk_animal_mae  FOREIGN KEY (cod_animal_mae) REFERENCES animal (cod_animal)
 );
 
--- ---------------------------------------------------------------------
--- Reprodução
--- ---------------------------------------------------------------------
 CREATE TABLE inseminacao (
     cod_inseminacao   INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     data_inseminacao  DATE         NOT NULL,
@@ -111,7 +81,7 @@ CREATE TABLE gestacao (
     data_encerramento      DATE,
     observacao             TEXT,
     cod_animal             INTEGER     NOT NULL,
-    cod_inseminacao        INTEGER,              -- nulo: animal adquirido já gestante
+    cod_inseminacao        INTEGER,
     CONSTRAINT uq_gestacao_inseminacao UNIQUE (cod_inseminacao),
     CONSTRAINT fk_gestacao_animal      FOREIGN KEY (cod_animal)      REFERENCES animal (cod_animal),
     CONSTRAINT fk_gestacao_inseminacao FOREIGN KEY (cod_inseminacao) REFERENCES inseminacao (cod_inseminacao)
@@ -128,7 +98,6 @@ CREATE TABLE parto (
     CONSTRAINT fk_parto_gestacao FOREIGN KEY (cod_gestacao)   REFERENCES gestacao (cod_gestacao)
 );
 
--- Fecha o ciclo animal -> parto ("nasce")
 ALTER TABLE animal
     ADD CONSTRAINT fk_animal_parto FOREIGN KEY (cod_parto) REFERENCES parto (cod_parto);
 
@@ -151,7 +120,7 @@ CREATE TABLE diagnostico_gestacao (
     observacao        TEXT,
     cod_animal        INTEGER     NOT NULL,
     cod_inseminacao   INTEGER,
-    cod_gestacao      INTEGER,                   -- "tem" (Gestação 1:N Diagnóstico)
+    cod_gestacao      INTEGER,
     CONSTRAINT ck_diag_metodo CHECK (btrim(metodo) <> ''),
     CONSTRAINT ck_diag_resultado CHECK (resultado IN ('POSITIVO', 'NEGATIVO', 'INCONCLUSIVO')),
     CONSTRAINT fk_diag_animal      FOREIGN KEY (cod_animal)      REFERENCES animal (cod_animal),
@@ -159,9 +128,6 @@ CREATE TABLE diagnostico_gestacao (
     CONSTRAINT fk_diag_gestacao    FOREIGN KEY (cod_gestacao)    REFERENCES gestacao (cod_gestacao)
 );
 
--- ---------------------------------------------------------------------
--- Atividades e medicação
--- ---------------------------------------------------------------------
 CREATE TABLE atividade (
     cod_atividade           INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     titulo                  VARCHAR(150) NOT NULL,
@@ -195,7 +161,7 @@ CREATE TABLE uso_medicamento (
     cod_uso              INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     data_hora_aplicacao  TIMESTAMP,
     dose                 VARCHAR(50),
-    unidade_carencia     VARCHAR(20),            -- ex.: HORAS, DIAS
+    unidade_carencia     VARCHAR(20),
     valor_carencia       INTEGER,
     fim_carencia_leite   TIMESTAMP,
     observacao           TEXT,
@@ -212,9 +178,6 @@ CREATE TABLE uso_medicamento (
     CONSTRAINT fk_uso_medicamento FOREIGN KEY (cod_medicamento) REFERENCES medicamento (cod_medicamento)
 );
 
--- ---------------------------------------------------------------------
--- Financeiro / leite
--- ---------------------------------------------------------------------
 CREATE TABLE fornecedor (
     cod_fornecedor  INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     nome            VARCHAR(150) NOT NULL,
@@ -274,7 +237,7 @@ CREATE TABLE receita (
     cod_tipo_receita INTEGER NOT NULL,
     valor           NUMERIC(12,2) NOT NULL,
     cod_fechamento  INTEGER,
-    CONSTRAINT uq_receita_fechamento UNIQUE (cod_fechamento),   -- "origina" 1:1
+    CONSTRAINT uq_receita_fechamento UNIQUE (cod_fechamento),
     CONSTRAINT ck_receita_valor CHECK (valor >= 0),
     CONSTRAINT fk_receita_tipo FOREIGN KEY (cod_tipo_receita) REFERENCES tipo_receita (cod_tipo_receita),
     CONSTRAINT fk_receita_fechamento FOREIGN KEY (cod_fechamento) REFERENCES fechamento_mensal (cod_fechamento)
@@ -284,7 +247,7 @@ CREATE TABLE documento (
     cod_documento       INTEGER GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
     tipo_documento      VARCHAR(50),
     nome_arquivo        VARCHAR(255) NOT NULL,
-    referencia_arquivo  VARCHAR(500) NOT NULL,       -- caminho/URL/chave do storage
+    referencia_arquivo  VARCHAR(500) NOT NULL,
     data_hora_inclusao  TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
     descricao           VARCHAR(255),
     cod_fechamento      INTEGER,
